@@ -78,6 +78,8 @@
             <entry key="useOwner" value="false"/>
             <entry key="autoSave" value="true"/>
             <entry key="backup" value="true"/>
+            <!-- The text that should be printed if Owner or TimeStamp is empty -->
+            <entry key="emptyField" value="NA"/>
             <entry key="defaultShowSource" value="false"/>
             <entry key="autoCompFF" value="false"/>
             <entry key="defaultOwner" value="Mohammed"/>
@@ -190,4 +192,4 @@
       </node>
     </node>
   </root>
-</preferences>
+</preferences>           

@@ -327,6 +327,7 @@ public class JabRefPreferences {
     public static final String USE_CASE_KEEPER_ON_SEARCH = "useCaseKeeperOnSearch";
     public static final String USE_CONVERT_TO_EQUATION = "useConvertToEquation";
     public static final String USE_IEEE_ABRV = "useIEEEAbrv";
+    public static final String EMPTY_FIELD = "emptyField";
 
     //non-default preferences
     private final static String CUSTOM_TYPE_NAME = "customTypeName_";
@@ -544,6 +545,7 @@ public class JabRefPreferences {
         defaults.put(EXPORT_SECONDARY_SORT_DESCENDING, Boolean.TRUE);
         defaults.put(EXPORT_TERTIARY_SORT_FIELD, "");
         defaults.put(EXPORT_TERTIARY_SORT_DESCENDING, Boolean.TRUE);
+        defaults.put(EMPTY_FIELD, "NA");
 
         defaults.put(NEWLINE, System.getProperty("line.separator"));
 
@@ -1662,6 +1664,15 @@ public class JabRefPreferences {
         InputStream is = new FileInputStream(f);
         try {
             Preferences.importPreferences(is);
+            String emptyField = JabRefPreferences.getInstance().get(JabRefPreferences.EMPTY_FIELD);
+            
+            if (emptyField.equals("NA")
+            		|| emptyField.equals("Na")
+            		|| emptyField.equals("na")
+            		|| emptyField.equals("-")) {
+            	System.err.println("The value of emptyField is Incorrect !");
+            	System.exit(-1);
+            }
         } catch (InvalidPreferencesFormatException ex) {
             throw new IOException(ex);
         }

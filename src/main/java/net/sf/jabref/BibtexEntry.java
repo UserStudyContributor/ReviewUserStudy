@@ -372,8 +372,8 @@ public class BibtexEntry
                 }
             }
         }
-
-        return null;
+        
+        return JabRefPreferences.getInstance().get(JabRefPreferences.EMPTY_FIELD);
     }
 
     public String getCiteKey() {
